@@ -94,10 +94,10 @@ def call(Map configMap){
                             if(releaseExists.isEmpty()){
                                 error "Deployment failed, not able to rollback, since it is first time deployment"
                             }
-                            else{
+                            else{ // 0 means previous version of the deployment
                                 sh """
                                 aws eks update-kubeconfig --region ${region} --name ${project}-dev
-                                helm rollback backend -n ${project} 0
+                                helm rollback backend -n ${project} 0 
                                 sleep 60
                                 """
                                 rollbackStatus = sh(script: "kubectl rollout status deployment/backend -n expense --timeout=2m || true", returnStdout: true).trim()
@@ -112,28 +112,6 @@ def call(Map configMap){
                     }
                 }
             }
-            
-            /* stage('Nexus Artifact Upload'){
-                steps{
-                    script{
-                        nexusArtifactUploader(
-                            nexusVersion: 'nexus3',
-                            protocol: 'http',
-                            nexusUrl: "${nexusUrl}",
-                            groupId: 'com.expense',
-                            version: "${appVersion}",
-                            repository: "backend",
-                            credentialsId: 'nexus-auth',
-                            artifacts: [
-                                [artifactId: "backend" ,
-                                classifier: '',
-                                file: "backend-" + "${appVersion}" + '.zip',
-                                type: 'zip']
-                            ]
-                        )
-                    }
-                }
-            } */
         }
         post { 
             always { 
