@@ -82,7 +82,7 @@ def call(Map configMap){
                     }
                 }
             }
-            /* stage('Verify Deployment'){
+            stage('Verify Deployment'){
                 steps{
                     script{
                         rollbackStatus = sh(script: "kubectl rollout status deployment/backend -n ${project} --timeout=1m || true", returnStdout: true).trim()
@@ -111,7 +111,7 @@ def call(Map configMap){
                         }
                     }
                 }
-            } */
+            }
         }
         post { 
             always { 
