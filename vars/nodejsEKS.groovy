@@ -46,7 +46,7 @@ def call(Map configMap){
                     """
                 }
             }
-            /* stage('Docker build'){
+            stage('Docker build'){
                 steps{
 
                     sh """
@@ -57,7 +57,7 @@ def call(Map configMap){
                 }
             }
 
-            stage('Deploy'){
+            /* stage('Deploy'){
                 steps{
                     script{
                         releaseExists = sh(script: "helm list -A --short | grep -w ${component} || true", returnStdout: true).trim()
@@ -81,8 +81,8 @@ def call(Map configMap){
                         }
                     }
                 }
-            }
-            stage('Verify Deployment'){
+            } */
+            /* stage('Verify Deployment'){
                 steps{
                     script{
                         rollbackStatus = sh(script: "kubectl rollout status deployment/backend -n ${project} --timeout=1m || true", returnStdout: true).trim()
