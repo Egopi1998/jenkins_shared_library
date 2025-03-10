@@ -76,7 +76,6 @@ def call(Map configMap){
                                 aws eks update-kubeconfig --region ${region} --name ${project}-dev
                                 cd helm
                                 sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
-                                cat templates/manifest.yaml 
                                 helm upgrade ${component} -n ${project} .
                             """
                         }
