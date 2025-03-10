@@ -57,7 +57,7 @@ def call(Map configMap){
                 }
             }
 
-            /* stage('Deploy'){
+            stage('Deploy'){
                 steps{
                     script{
                         releaseExists = sh(script: "helm list -A --short | grep -w ${component} || true", returnStdout: true).trim()
@@ -81,7 +81,7 @@ def call(Map configMap){
                         }
                     }
                 }
-            } */
+            }
             /* stage('Verify Deployment'){
                 steps{
                     script{
