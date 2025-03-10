@@ -29,7 +29,7 @@ def call(Map configMap){
                     }
                 }
             }
-            stage('Install Dependencies') {
+            /* stage('Install Dependencies') {
                 steps {
                 sh """
                     npm install
@@ -45,7 +45,7 @@ def call(Map configMap){
                     ls -ltr
                     """
                 }
-            }
+            } */
             stage('Docker build'){
                 steps{
 
